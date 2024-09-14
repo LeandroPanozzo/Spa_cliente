@@ -20,7 +20,7 @@ export function CommentsList() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`${API_URL}/posts/`);
+      const response = await axios.get(`${API_URL}/sentirseBien/api/v1/posts/`);
       setPosts(response.data);
     } catch (error) {
       setError('Error al cargar las publicaciones');
@@ -36,7 +36,7 @@ export function CommentsList() {
     };
 
     try {
-      const response = await axios.post(`${API_URL}/posts/`, postData);
+      const response = await axios.post(`${API_URL}/sentirseBien/api/v1/posts/`, postData);
       setPosts([...posts, response.data]);
       setTitulo('');
       setContenido('');
@@ -66,7 +66,7 @@ export function CommentsList() {
           originalRequest._retry = true;
           try {
             const refreshToken = localStorage.getItem('refresh_token');
-            const response = await axios.post(`${API_URL}/token/refresh/`, { refresh: refreshToken });
+            const response = await axios.post(`${API_URL}/sentirseBien/api/v1/token/refresh/`, { refresh: refreshToken });
             localStorage.setItem('access_token', response.data.access);
             axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
             return axios(originalRequest);

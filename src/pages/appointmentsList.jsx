@@ -25,7 +25,7 @@ export function AppointmentsList() {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get(`${API_URL}/appointments/`);
+      const response = await axios.get(`${API_URL}/sentirseBien/api/v1/appointments/`);
       setAppointments(response.data);
     } catch (error) {
       setError('Error al cargar las citas');
@@ -34,7 +34,7 @@ export function AppointmentsList() {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get(`${API_URL}/services/`);
+      const response = await axios.get(`${API_URL}/sentirseBien/api/v1/services/`);
       setServices(response.data);
     } catch (error) {
       setError('Error al cargar los servicios');
@@ -49,7 +49,7 @@ export function AppointmentsList() {
     };
 
     try {
-      const response = await axios.post(`${API_URL}/appointments/`, appointmentData);
+      const response = await axios.post(`${API_URL}/sentirseBien/api/v1/appointments/`, appointmentData);
       setAppointments([...appointments, response.data]);
       setSelectedService('');
       setAppointmentDate('');
@@ -61,7 +61,7 @@ export function AppointmentsList() {
 
   const handleDeleteAppointment = async (id) => {
     try {
-      await axios.delete(`${API_URL}/appointments/${id}/`);
+      await axios.delete(`${API_URL}/sentirseBien/api/v1/appointments/${id}/`);
       setAppointments(appointments.filter(appointment => appointment.id !== id));
     } catch (error) {
       setError('Error al eliminar la cita');
@@ -70,7 +70,7 @@ export function AppointmentsList() {
 
   const handleEditAppointment = async (id, updatedData) => {
     try {
-      const response = await axios.put(`${API_URL}/appointments/${id}/`, updatedData);
+      const response = await axios.put(`${API_URL}/sentirseBien/api/v1/appointments/${id}/`, updatedData);
       setAppointments(appointments.map(appointment => 
         appointment.id === id ? response.data : appointment
       ));
@@ -125,7 +125,7 @@ export function AppointmentsList() {
         originalRequest._retry = true;
         try {
           const refreshToken = localStorage.getItem('refresh_token');
-          const response = await axios.post(`${API_URL}/token/refresh/`, { refresh: refreshToken });
+          const response = await axios.post(`${API_URL}/sentirseBien/api/v1/token/refresh/`, { refresh: refreshToken });
           localStorage.setItem('access_token', response.data.access);
           axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
           return axios(originalRequest);

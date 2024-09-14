@@ -17,7 +17,7 @@ export function InicioSesion() {
     event.preventDefault();
 
     try {
-      const response = await axios.post(`${apiUrl}/token/`, {
+      const response = await axios.post(`${apiUrl}/sentirseBien/api/v1/token/`, {
         username,
         password,
       });

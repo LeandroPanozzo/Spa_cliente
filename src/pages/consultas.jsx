@@ -42,7 +42,7 @@ export function QueryAndResponseComponent() {
         originalRequest._retry = true;
         try {
           const refreshToken = localStorage.getItem('refresh_token');
-          const response = await axios.post(`${import.meta.env.VITE_API_URL}/token/refresh/`, { refresh: refreshToken });
+          const response = await axios.post(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/token/refresh/`, { refresh: refreshToken });
           localStorage.setItem('access_token', response.data.access);
           axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
           return axios(originalRequest);
@@ -57,7 +57,7 @@ export function QueryAndResponseComponent() {
 
   const fetchQueries = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/queries/`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/queries/`);
       setQueries(response.data);
     } catch (error) {
       setError('Error al cargar las consultas');
@@ -66,7 +66,7 @@ export function QueryAndResponseComponent() {
 
   const fetchResponses = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/responses/`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/responses/`);
       setResponses(response.data);
     } catch (error) {
       setError('Error al cargar las respuestas');
@@ -76,7 +76,7 @@ export function QueryAndResponseComponent() {
   const handleNewQuerySubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/queries/`, newQuery);
+      await axios.post(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/queries/`, newQuery);
       setNewQuery({ title: '', content: '' });
       fetchQueries();
     } catch (error) {
@@ -87,7 +87,7 @@ export function QueryAndResponseComponent() {
   const handleNewResponseSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/responses/`, newResponse);
+      await axios.post(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/responses/`, newResponse);
       setNewResponse({ content: '', query: null });
       fetchQueries();
     } catch (error) {
@@ -97,7 +97,7 @@ export function QueryAndResponseComponent() {
 
   const handleDeleteQueries = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/queries/${id}/`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/sentirseBien/api/v1/queries/${id}/`);
       setQueries(queries.filter(query => query.id !== id));
     } catch (error) {
       setError('Error al eliminar la consulta');

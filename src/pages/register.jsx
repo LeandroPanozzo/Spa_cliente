@@ -26,7 +26,7 @@ export function Register() {
     }
 
     try {
-      const response = await axios.post(`${API_URL}/register/`, {
+      const response = await axios.post(`${API_URL}/sentirseBien/api/v1/register/`, {
         username,
         email,
         password,

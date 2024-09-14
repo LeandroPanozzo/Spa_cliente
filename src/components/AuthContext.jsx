@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
         const userId = decodedToken.user_id; // Asegúrate de que 'user_id' es el campo correcto en tu payload
 
         // Realiza la solicitud para obtener los detalles del usuario
-        const response = await axios.get(`/users/${userId}/`, {
+        const response = await axios.get(`/sentirseBien/users/${userId}/`, {
           headers: {
             Authorization: `Bearer ${accessToken}` // Incluye el token de acceso en los encabezados
           }
