@@ -35,6 +35,9 @@ export function Register() {
 
       setMessage('Registro exitoso');
       console.log('Registro exitoso:', response.data);
+      localStorage.setItem('access_token', response.data.access);
+      localStorage.setItem('refresh_token', response.data.refresh);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
       login(); // Marca al usuario como autenticado
       // Redirigir a la página de inicio después del registro exitoso
       navigate('/sentirseBien');
