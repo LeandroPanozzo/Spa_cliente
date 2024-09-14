@@ -1,0 +1,168 @@
+/* Estilos generales */
+.job-page {
+    padding: 20px;
+    position: relative;
+    background-color: #f0fff0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-wrapper {
+    position: relative;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.hero-section {
+    background-image: url('../pages/img/trabajo_equipo.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6); /* Ajusta la opacidad según sea necesario */
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    z-index: 0;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0); /* Cambia el 0.7 a 0 para hacerla transparente */
+    backdrop-filter: none; /* Quita el desenfoque */
+}
+
+.lead {
+    color: #ffffff; /* Cambia el verde a blanco */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Opcional: deja la sombra de texto para que se vea bien sobre la imagen */
+}
+
+.texto-superpuesto {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px;
+}
+
+.parrafo-bienestar {
+    color: #5ec75e;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container > h2 {
+    font-size: 2.5rem;
+    color: #5ec75e;
+    margin-bottom: 35px;
+    font-weight: 700;
+}
+
+.job-description, .application-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-description h3, .application-section h3 {
+    color: #5ec75e;
+    margin-bottom: 20px;
+}
+
+.job-description ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.job-description li {
+    margin-bottom: 10px;
+    color: #6b8e81;
+}
+
+.application-section p {
+    color: #6b8e81;
+    margin-bottom: 20px;
+}
+
+.application-section a {
+    color: #0dda0d;
+    text-decoration: none;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-apply {
+    display: inline-block;
+    background-color: #ffd1dc;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-apply:hover {
+    background-color: #ffb6c1;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .hero-section, .hero-content {
+        padding: 0 10px;
+    }
+
+    .job-description, .application-section {
+        margin: 40px 0; /* Margen superior e inferior de 40px */
+    }
+
+    .container > h2 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 2.5rem;
+    }
+
+    .parrafo-bienestar {
+        font-size: 1.2rem;
+    }
+
+    .button-container {
+        margin-top: 10px;
+    }
+}

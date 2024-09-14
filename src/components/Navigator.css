@@ -1,0 +1,127 @@
+/*navigator.css*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Nueva clase para ajustar el contenido principal cuando la barra lateral esté abierta */
+.main-content {
+    transition: margin-right 0.3s ease-in-out;
+}
+
+.main-content.sidebar-open {
+    margin-right: 250px; /* Ajusta este valor al ancho de tu barra lateral */
+}
+
+.nav-left {
+    position: relative; /* Asegura que los elementos dentro se posicionen relativos a este contenedor */
+}
+
+.sidebar {
+    width: 250px; /* Ancho fijo */
+    background-color: #f8f9fa;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    top: 70px; /* Mantén la barra en la posición deseada */
+    padding-bottom: 40px;
+    height: auto;
+    overflow-y: auto;
+    transform: translateX(100%); /* Oculta la barra lateral inicialmente */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999; /* Asegura que la barra lateral esté sobre el contenido */
+    
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Muestra la barra lateral cuando está abierta */
+}
+
+.text-center {
+    text-align: center;
+    color: #ff7f8a;
+    
+}
+
+.content-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #ff7f8a;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 1rem;
+    color: #ff7f8a;
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+.list-group-item:hover {
+    background-color: #c4ffc4; /* Verde pastel */
+}
+
+.list-group-item:hover a {
+    color: #000;
+}
+
+.list-group-item:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilo del botón de hamburguesa */
+.hamburger {
+    position: fixed;
+    right: 15px;
+    top: 70px; /* Ajusta este valor para bajar el botón */
+    background-color: #ff7f8a;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 93%; /* Ancho completo en pantallas pequeñas */
+        height: 80%;
+        top: 5; /* Ajusta para que ocupe toda la altura */
+    }
+
+    .hamburger {
+        top: 15px; /* Ajusta la posición del botón en pantallas pequeñas */
+    }
+}

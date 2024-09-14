@@ -1,0 +1,172 @@
+.task-page {
+    padding: 20px;
+    position: relative;
+  }
+  .lead {
+    color: #4CAF50; /* or a very light color */
+  }
+  .parrafo-bienestar {
+    color: #4CAF50; /* Cambia este código de color por el que prefieras */
+  }
+  
+  .content-wrapper {
+    position: relative;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .content-wrapper::before,
+  .content-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0px;
+    background-color: #4CAF50;
+  }
+  
+  .content-wrapper::before {
+    left: 20px;
+  }
+  
+  .content-wrapper::after {
+    right: 20px;
+  }
+  
+  .hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .hero-section .spa-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .texto-superpuesto {
+    background-color: rgba(128, 126, 126, 0.7); /* Fondo gris semi-transparente */
+    padding: 20px; /* Añade espacio alrededor del contenido */
+    position: relative;
+    z-index: 1;
+  }
+  .hero-section  {
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté sobre la imagen */
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 100px; /* Ajusta este valor para centrar verticalmente el texto */
+  }
+  
+  .hero-section .img-fluid {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .texto-pastel {
+    color: #d4edda;
+  }
+  .btn-group {
+    margin-top: 20px; /* Espacio arriba de los botones */
+  }
+  .btn-group a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: 2px solid #57d8b1;
+    border-radius: 5px;
+    background-color: rgba(22, 212, 22, 0.5);
+    color: white; /* Asegúrate de que el texto sea visible */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+  }
+  .btn-group a:hover {
+    background-color: rgba(22, 212, 22, 0.7); /* Efecto hover */
+  }
+  
+  .card.service-card {
+    cursor: pointer;
+  }
+  s
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .img-tarjeta {
+    border-radius: 8px;
+  }
+  
+  .img-tarjeta-margen {
+    margin-top: 10px;
+  }
+  
+  .texto-pequeño {
+    font-size: 1.1rem;
+  }
+  
+  .spa-image {
+    width: 500%; /* Esto asegura que la imagen ocupe todo el ancho disponible */
+    height: 350px; /* Ajusta esta altura según sea necesario para que encaje en el cuadro */
+    object-fit: cover; /* Esto asegura que la imagen cubra todo el espacio disponible sin distorsionarse */
+    margin-bottom: 20px; /* Un margen inferior para separar la imagen del texto */
+  }
+  .card.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    border: 1px solid #e0e0e0; /* Border to give a clear outline */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; /* Rounded corners for top image */
+  }
+  
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .texto-pequeño {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  
+  .btn-outline-success {
+    margin-top: auto; /* Push the button to the bottom */
+    width: 100%;
+  }
+  .servicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribuye uniformemente las tarjetas */
+  }
+  
+  .servicios .col-md-3 {
+    flex: 1;
+    min-width: 200px; /* Asegura que las tarjetas no sean demasiado pequeñas */
+    max-width: 300px;
+  }
+  
+  .card.service-card {
+    margin-bottom: 20px;
+  }
+  

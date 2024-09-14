@@ -1,0 +1,103 @@
+.footer {
+  background-color: #e6f3ef;
+  padding: 40px 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-socials {
+  text-align: center;
+  margin-top: 20px;
+  color: #5ec75e;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icon {
+  font-size: 24px;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
+
+.footer-info {
+  flex: 1;
+  text-align: left;
+  padding-right: 40px;
+}
+
+.footer-info h2 {
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.footer-info p {
+  color: #5ec75e;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.footer-buttons {
+  margin-top: 20px;
+}
+
+.footer-button {
+  background-color: #ff7f8a;
+  color: #ffffff;
+  border: none; 
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-decoration: none;  /* Elimina el subrayado */
+  display: inline-block;  /* Asegura que Link se comporte como botón */
+}
+
+.footer-button:hover {
+  background-color: #fc9ba9;  /* Color más oscuro al hacer hover */
+  transform: translateY(-3px);  /* Añade el efecto de movimiento */
+}
+
+.footer-map {
+  flex: 1;
+  max-width: 500px;
+}
+
+.footer-copyright {
+  margin-top: 30px;
+  text-align: center;
+  color: #28a745;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-info {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .footer-map {
+    width: 100%;
+  }
+}

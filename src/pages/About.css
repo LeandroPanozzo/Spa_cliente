@@ -1,0 +1,156 @@
+/* About.css */
+.about-page {
+    padding: 20px;
+    position: relative;
+    background-color: #f0fff0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .lead {
+    color: #fc9ba9;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+  
+  .parrafo-bienestar {
+    color: #5ec75e;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .content-wrapper {
+    position: relative;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .content-wrapper::before,
+  .content-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #b5e3d8;
+  }
+  
+  .content-wrapper::before {
+    left: 0;
+  }
+  
+  .content-wrapper::after {
+    right: 0;
+  }
+  
+  .hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-bottom: 60px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-section .spa-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-section:hover .spa-image {
+    transform: scale(1.05);
+  }
+  
+  .texto-superpuesto {
+    background-color: rgba(0, 255, 34, 0.7);
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #fc9ba9;
+  }
+  
+  .container > h2 {
+    font-size: 2.5rem;
+    color: #fc9ba9;
+    margin-bottom: 35px;
+    font-weight: 700;
+  }
+  
+  .container > p {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5ec75e;
+  }
+  
+  .team-image {
+    margin: 0 auto; /* Centrar la imagen dentro del contenedor */
+    display: block; /* Asegura que sea tratada como un bloque */
+    transition: transform 0.3s ease;
+  }
+  
+  .team-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .valores-section {
+    margin-top: 60px;
+  }
+  
+  .valor-card {
+    background-color: #f3f2f3;
+    padding: 30px;
+    border-radius: 15px;
+    height: 100%;
+    transition: all 0.3s ease;
+    margin: 15px;
+  }
+  
+  .valor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(189, 157, 157, 0.1);
+  }
+  
+  .valor-card h4 {
+    color: #5ec75e;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .valor-card p {
+    color: #6b8e81;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+  
+    .lead {
+      font-size: 1.8rem;
+    }
+  
+    .parrafo-bienestar {
+      font-size: 1rem;
+    }
+  
+    .container > h2 {
+      font-size: 2rem;
+    }
+  }

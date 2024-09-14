@@ -1,0 +1,124 @@
+/* Header.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+.nav-right button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ff7f8a; /* Rosa pastel, igual que los enlaces */
+    padding: 4px 4px; /* Igual que los enlaces */
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-right button:hover {
+    background-color: #c4ffc4; /* Fondo igual al de los enlaces al pasar el ratón */
+    color: #ff7f8a;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Reduce el espacio entre elementos */
+    flex: 1;
+}
+
+.links {
+    display: flex;
+    gap: 5px; /* Reduce el espacio entre enlaces */
+}
+
+.nav-left a, .nav-right a, .nav-right button {
+    text-decoration: none;
+    color: #ff7f8a; /* Rosa pastel */
+    padding: 4px 4px; /* Igual padding */
+    border-radius: 4px;
+    font-weight: 500; /* Igual que los enlaces */
+    font-size: 16px; /* Tamaño de letra consistente */
+    transition: all 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover, .nav-right button:hover {
+    background-color: #c4ffc4;
+    color: #ff7f8a;
+}
+
+
+.logo img {
+    max-height: 30px; /* Reduce la altura del logo en pantallas pequeñas */
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .links {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 0%;
+        margin-bottom: 0px; /* Añadir margen inferior para separación */
+    }
+
+    .nav-right {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center; /* Centrar los elementos */
+    }
+
+    .nav-right a, .nav-right button {
+        width: auto; /* Ajustar el ancho para que no ocupe todo el espacio */
+        margin-top: 0px; /* Añadir margen superior para separación */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-left {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px; /* Reduce el espacio entre los elementos */
+    }
+
+    .logo img {
+        max-height: 25px; /* Reduce aún más la altura del logo */
+    }
+
+    .nav-right a, .nav-right button {
+        padding: 8px; /* Reduce el padding */
+        font-size: 14px; /* Ajusta el tamaño del texto */
+    }
+}
