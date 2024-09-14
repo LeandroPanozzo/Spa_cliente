@@ -16,6 +16,7 @@ import { Services } from './components/services';
 import { Others } from './components/Others';
 import { Announcements } from './components/Announcements';
 import { Job } from './components/job';
+import NotFound from './pages/NotFound'; // Importa la página de error 404
 
 import axios from 'axios';
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/Others" element={<Others />} />
           <Route path="/Job" element={<Job />} />
           <Route path="/Announcements" element={<Announcements />} />
+          <Route path="*" element={<NotFound />} /> {/* Ruta para manejar 404 */}
         </Routes>
         <Footer/> 
       </BrowserRouter>
