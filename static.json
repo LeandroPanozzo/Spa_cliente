@@ -1,6 +1,11 @@
 {
-    "routes": {
-      "/**": "index.html"
-    }
+    "routes": [
+      {
+        "type": "rewrite",
+        "source": "/*",
+        "destination": "/index.html"
+      }
+    ]
   }
+  
   
