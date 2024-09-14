@@ -1,5 +1,5 @@
 import React from 'react';
-import './Job.css';
+import './job.css';
 
 export function Job() {
     return (
