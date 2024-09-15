@@ -1,4 +1,4 @@
-/*navigator.css*/
+/* navigator.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 body {
@@ -19,7 +19,7 @@ body {
 }
 
 .sidebar {
-    width: 250px; /* Ancho fijo */
+    width: 250px; /* Ancho fijo para pantallas grandes */
     background-color: #f8f9fa;
     padding: 15px;
     position: fixed;
@@ -31,7 +31,6 @@ body {
     transform: translateX(100%); /* Oculta la barra lateral inicialmente */
     transition: transform 0.3s ease-in-out;
     z-index: 999; /* Asegura que la barra lateral esté sobre el contenido */
-    
 }
 
 .sidebar.open {
@@ -41,7 +40,6 @@ body {
 .text-center {
     text-align: center;
     color: #ff7f8a;
-    
 }
 
 .content-section h3 {
@@ -106,19 +104,33 @@ body {
     cursor: pointer;
     border-radius: 5px;
     z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+    
 }
 
 .hamburger:focus {
     outline: none;
 }
 
-
+/* Media Queries para responsividad */
+/* navigator.css */
 /* Media Queries para responsividad */
 @media (max-width: 768px) {
     .sidebar {
-        width: 93%; /* Ancho completo en pantallas pequeñas */
-        height: 80%;
-        top: 5; /* Ajusta para que ocupe toda la altura */
+        width: 50%; /* Ajusta el ancho para ocupar menos del 100% en pantallas pequeñas */
+        height: auto; /* Ajusta la altura automáticamente para contenido variable */
+        top: 0; /* Alinea la barra lateral en la parte superior */
+        bottom: 0; /* Alinea la barra lateral en la parte inferior */
+        margin-top: 100px; /* Elimina el margen superior */
+        padding-right: 15px; /* Añade un relleno derecho para evitar que el contenido se corte */
+    }
+
+    .button-group {
+        margin-right: 0; /* Asegura que no haya margen derecho en el grupo de botones */
+    }
+
+    .list-group-item {
+        width: calc(100% - 10px); /* Ajusta el ancho de los botones para que no se corten, considerando el relleno */
+        box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total del botón */
     }
 
     .hamburger {

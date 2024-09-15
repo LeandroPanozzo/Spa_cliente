@@ -63,13 +63,6 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Opcional: deja la sombra de texto para que se vea bien sobre la imagen */
 }
 
-.texto-superpuesto {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 40px;
-}
-
 .parrafo-bienestar {
     color: #5ec75e;
     font-size: 1.4rem;
@@ -125,7 +118,7 @@
 
 .btn-apply {
     display: inline-block;
-    background-color: #ffd1dc;
+    background-color: #ff7f8a;
     color: #ffffff;
     padding: 12px 25px;
     border-radius: 30px;
@@ -141,17 +134,9 @@
 }
 
 /* Estilos para dispositivos móviles */
-@media (max-width: 768px) {
-    .hero-section, .hero-content {
-        padding: 0 10px;
-    }
-
-    .job-description, .application-section {
-        margin: 40px 0; /* Margen superior e inferior de 40px */
-    }
-
-    .container > h2 {
-        font-size: 2rem;
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 250px;
     }
 
     .lead {
@@ -162,7 +147,67 @@
         font-size: 1.2rem;
     }
 
+    .container > h2 {
+        font-size: 2rem;
+    }
+
     .button-container {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 200px;
+    }
+
+    .lead {
+        font-size: 2rem;
+    }
+
+    .parrafo-bienestar {
+        font-size: 1.1rem;
+    }
+
+    .container > h2 {
+        font-size: 1.8rem;
+    }
+
+    .job-description, .application-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .btn-apply {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 150px;
+    }
+
+    .lead {
+        font-size: 1.5rem;
+    }
+
+    .parrafo-bienestar {
+        font-size: 1rem;
+    }
+
+    .container > h2 {
+        font-size: 1.5rem;
+    }
+
+    .job-description, .application-section {
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .btn-apply {
+        padding: 8px 15px;
+        font-size: 0.8rem;
     }
 }

@@ -114,7 +114,7 @@ export function Register() {
 const styles = {
   container: {
     maxWidth: '400px',
-    margin: '20px auto',
+    margin: '100px auto',
     padding: '20px',
     border: '1px solid #ccc',
     borderRadius: '8px',
