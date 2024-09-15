@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom'; // Importa Link
-import { useAuth } from '../components/AuthContext'; // Importa el hook de autenticación
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -12,16 +12,26 @@ export function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth(); // Obtén la función de login
+  const { login } = useAuth();
   const [hover, setHover] = useState(false);
 
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
+  const isValidEmail = (email) => {
+    // Expresión regular para validar el formato del correo electrónico
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       setMessage('Las contraseñas no coinciden');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setMessage('El correo electrónico no tiene un formato válido');
       return;
     }
 
@@ -38,8 +48,7 @@ export function Register() {
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
-      login(); // Marca al usuario como autenticado
-      // Redirigir a la página de inicio después del registro exitoso
+      login();
       navigate('/sentirseBien');
     } catch (error) {
       console.error('Error en el registro:', error.response?.data || error.message);
@@ -104,6 +113,7 @@ export function Register() {
           Registrarse
         </button>
       </form>
+      {message && <p style={styles.message}>{message}</p>}
       <p style={styles.loginText}>
         ¿Ya tienes cuenta? <Link to="/login" style={styles.link}>Inicia sesión aquí</Link>
       </p>
@@ -120,12 +130,12 @@ const styles = {
     borderRadius: '8px',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
     backgroundColor: '#f9f9f9',
-    color: '#28a745', // Letra verde pastel
+    color: '#28a745',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    color: '#fc9ba9', // Letra rosa pastel
+    color: '#fc9ba9',
   },
   inputGroup: {
     marginBottom: '15px',
@@ -140,22 +150,26 @@ const styles = {
     padding: '10px',
     borderRadius: '4px',
     border: 'none',
-    backgroundColor: '#28a745', // Verde pastel
+    backgroundColor: '#28a745',
     color: '#fff',
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease', // Efecto de transición suave
+    transition: 'background-color 0.3s ease',
   },
-  // Nuevo estilo para el hover
   buttonHover: {
-    backgroundColor: '#74c769', // Verde más claro al pasar el mouse
+    backgroundColor: '#74c769',
   },
   loginText: {
     marginTop: '10px',
     textAlign: 'center',
-    color: '#333', // Color de texto para el mensaje
+    color: '#333',
   },
   link: {
-    color: '#77dd77', // Verde pastel para el enlace
+    color: '#77dd77',
     textDecoration: 'none',
-  }
+  },
+  message: {
+    color: '#d9534f', // Color rojo para mensajes de error
+    textAlign: 'center',
+    marginTop: '10px',
+  },
 };
