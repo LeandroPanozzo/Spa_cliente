@@ -117,13 +117,16 @@ export function CommentsList() {
             </div>
             <div>
               <label style={styles.pastelGreenText}>Contenido:</label>
-              <textarea
-                value={contenido}
-                onChange={(e) => setContenido(e.target.value)}
-                placeholder="Contenido del post"
-                style={styles.textarea}
-                required
-              />
+              <div>
+                <textarea
+                  value={contenido}
+                  onChange={(e) => setContenido(e.target.value)}
+                  placeholder="Contenido del post"
+                  style={styles.textarea}
+                  required
+                />
+              </div>
+              
             </div>
             {!isAuthenticated && (
               <div>
