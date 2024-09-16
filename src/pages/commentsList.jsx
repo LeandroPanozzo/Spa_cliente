@@ -11,7 +11,7 @@ export function CommentsList() {
   const [contenido, setContenido] = useState('');
   const [alias, setAlias] = useState('');
   const [error, setError] = useState('');
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, isStaff, logout } = useAuth(); // isStaff viene de useAuth
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -99,44 +99,49 @@ export function CommentsList() {
         ))}
       </ul>
 
-      <h2 style={styles.pastelPinkText}>Crear Publicación</h2>
-      <form onSubmit={handlePostSubmit} style={styles.form}>
-        <div>
-          <label style={styles.pastelGreenText}>Título:</label>
-          <input
-            type="text"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-            placeholder="Título del post"
-            style={styles.input}
-            required
-          />
-        </div>
-        <div>
-          <label style={styles.pastelGreenText}>Contenido:</label>
-          <textarea
-            value={contenido}
-            onChange={(e) => setContenido(e.target.value)}
-            placeholder="Contenido del post"
-            style={styles.textarea}
-            required
-          />
-        </div>
-        {!isAuthenticated && (
-          <div>
-            <label>Alias:</label>
-            <input
-              type="text"
-              value={alias}
-              onChange={(e) => setAlias(e.target.value)}
-              placeholder="Alias para postear"
-              style={styles.input}
-              required
-            />
-          </div>
-        )}
-        <button type="submit" style={styles.button}>Crear Publicación</button>
-      </form>
+      {/* Solo mostrar el formulario si el usuario no es staff */}
+      {!isStaff && (
+        <>
+          <h2 style={styles.pastelPinkText}>Crear Publicación</h2>
+          <form onSubmit={handlePostSubmit} style={styles.form}>
+            <div>
+              <label style={styles.pastelGreenText}>Título:</label>
+              <input
+                type="text"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+                placeholder="Título del post"
+                style={styles.input}
+                required
+              />
+            </div>
+            <div>
+              <label style={styles.pastelGreenText}>Contenido:</label>
+              <textarea
+                value={contenido}
+                onChange={(e) => setContenido(e.target.value)}
+                placeholder="Contenido del post"
+                style={styles.textarea}
+                required
+              />
+            </div>
+            {!isAuthenticated && (
+              <div>
+                <label>Alias:</label>
+                <input
+                  type="text"
+                  value={alias}
+                  onChange={(e) => setAlias(e.target.value)}
+                  placeholder="Alias para postear"
+                  style={styles.input}
+                  required
+                />
+              </div>
+            )}
+            <button type="submit" style={styles.button}>Crear Publicación</button>
+          </form>
+        </>
+      )}
     </div>
   );
 }
@@ -144,7 +149,7 @@ export function CommentsList() {
 const styles = {
   container: {
     maxWidth: '800px',
-    margin: '0 auto',
+    margin: '40px auto',
     padding: '20px',
   },
   form: {
@@ -187,9 +192,9 @@ const styles = {
     color: 'red',
   },
   pastelGreenText: {
-    color: '#28a745',  // Verde pastel
+    color: '#28a745',
   },
   pastelPinkText: {
-    color: '#fc9ba9',  // Rosa pastel
+    color: '#fc9ba9',
   },
 };
