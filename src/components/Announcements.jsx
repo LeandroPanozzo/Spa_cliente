@@ -146,28 +146,28 @@ export function Announcements() {
         {/* Formulario para crear anuncios */}
         {isStaff && (
           <form className="announcement-form" onSubmit={handleAnnouncementSubmit}>
-            <input
-              type="text"
-              placeholder="Título del anuncio"
-              value={announcementTitle}
-              onChange={(e) => setAnnouncementTitle(e.target.value)}
-              required
-            />
-            <textarea
-              placeholder="Contenido del anuncio"
-              value={announcementContent}
-              onChange={(e) => setAnnouncementContent(e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Descripción de fechas"
-              value={announcementDate} // Cambiado a texto
-              onChange={(e) => setAnnouncementDate(e.target.value)}
-              required
-            />
-            <button type="submit">Crear Anuncio</button>
-          </form>
+          <input
+            type="text"
+            placeholder="Título del anuncio"
+            value={announcementTitle}
+            onChange={(e) => setAnnouncementTitle(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Contenido del anuncio"
+            value={announcementContent}
+            onChange={(e) => setAnnouncementContent(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Descripción de fechas"
+            value={announcementDate}
+            onChange={(e) => setAnnouncementDate(e.target.value)}
+            required
+          />
+          <button type="submit">Crear Anuncio</button>
+        </form>
         )}
       </div>
     </div>

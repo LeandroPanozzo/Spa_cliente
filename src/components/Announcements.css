@@ -11,6 +11,62 @@
     padding: 0 20px;
   }
   
+  .announcement-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .announcement-form input, .announcement-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #4ea74e;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .announcement-form input:focus, .announcement-form textarea:focus {
+    border-color: #ff7f8a;
+  }
+  
+  .announcement-form textarea {
+    resize: none;
+    height: 150px;
+  }
+  
+  .announcement-form button {
+    background-color: #4ea74e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .announcement-form button:hover {
+    background-color: #3b8a40;
+    transform: scale(1.05);
+  }
+  
+  .announcement-form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(78, 167, 78, 0.5);
+  }
+  
   .announcements-title {
     font-size: 2.5rem;
     color: #ff7f8a;
