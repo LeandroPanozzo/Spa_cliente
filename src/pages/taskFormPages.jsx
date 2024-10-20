@@ -232,7 +232,7 @@ export function TaskPag() {
                       <img src={service.image} className="card-img-top img-fluid img-tarjeta" alt={service.title} />
                       <div className="card-body">
                         <h5 className="card-title texto-pequeño">{service.title}</h5>
-                        <a href="/appointments" className="btn-footer-style">Leer más</a>
+                        <a href="/services" className="btn-footer-style">Leer más</a>
                       </div>
                     </div>
                   </div>
