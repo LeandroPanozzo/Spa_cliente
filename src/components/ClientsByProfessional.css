@@ -1,0 +1,126 @@
+.clients-by-professional-page {
+    padding: 60px 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #ff7f8a;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Increased gap for better spacing */
+    margin-bottom: 30px;
+}
+
+.filter-label {
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    font-weight: 600; /* Bold weight for emphasis */
+    color: #333; /* Dark gray color for better visibility */
+    margin-right: 10px; /* Spacing between label and input */
+    font-size: 1.1rem; /* Slightly larger font size */
+    text-transform: uppercase; /* Optional: make text uppercase for style */
+    letter-spacing: 0.5px; /* Optional: add letter spacing */
+}
+
+.filter-select, .filter-input {
+    padding: 12px 15px; /* Added padding for comfort */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 220px; /* Consistent width */
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s; /* Added background transition */
+    background-color: #fff; /* Use white background for inputs */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.filter-select:focus, .filter-input:focus {
+    border-color: #4ea74e;
+    outline: none;
+    box-shadow: 0 0 8px rgba(78, 167, 78, 0.5); /* Shadow effect on focus */
+    background-color: #f5fff2; /* Light green background on focus */
+}
+
+
+.filter-button {
+    padding: 10px 20px;
+    background-color: #4ea74e;
+    color: white;
+    border: none;
+    border-radius: 25px; /* Rounded button edges */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Add box shadow */
+    display: inline-block; /* Ensures buttons stay inline */
+}
+
+.filter-button:hover {
+    background-color: #5fc55f;
+    transform: scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 4px 15px rgba(78, 167, 78, 0.3); /* Shadow on hover */
+}
+
+/* New styles for better appearance */
+.filter-select {
+    height: 40px; /* Adjust height for better alignment */
+}
+
+.filter-input {
+    height: 40px; /* Adjust height for better alignment */
+}
+
+
+.button-groupp {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+.filter-button:hover {
+    background-color: #5fc55f;
+    transform: scale(1.01);
+}
+
+.professionals-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.professional-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.professional-title {
+    cursor: pointer;
+    color: #28a745;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.appointments-list {
+    margin-top: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.appointment-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 4px solid #4ea74e;
+}
