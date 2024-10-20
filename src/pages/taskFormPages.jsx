@@ -9,7 +9,7 @@ import packCompletoImage from './img/packCompletoImage.jpg';
 import relajacionImage from './img/relajacion_img.jpg';
 import sobreNosotrosImage from './img/sobreNosotrosNoautenticatedIMG.jpg';
 import inicioImage from './img/InicioNoAutenticadoIMG.jpg';
-import Navigator from '../components/Navigator';
+import Navigator from '../components/navigator';
  // Importar el componente Navigator
 
 export function TaskPag() {
