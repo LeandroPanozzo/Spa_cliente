@@ -24,20 +24,20 @@
 
 .filter-label {
     font-family: 'Poppins', sans-serif; /* Use Poppins font */
-    font-weight: 600; /* Bold weight for emphasis */
+    font-weight: 400; /* Bold weight for emphasis */
     color: #333; /* Dark gray color for better visibility */
-    margin-right: 10px; /* Spacing between label and input */
+    margin-right: 5px; /* Spacing between label and input */
     font-size: 1.1rem; /* Slightly larger font size */
     text-transform: uppercase; /* Optional: make text uppercase for style */
     letter-spacing: 0.5px; /* Optional: add letter spacing */
 }
 
 .filter-select, .filter-input {
-    padding: 12px 15px; /* Added padding for comfort */
+    padding: 5px 15px; /* Added padding for comfort */
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    width: 220px; /* Consistent width */
+    width: 130px; /* Consistent width */
     transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s; /* Added background transition */
     background-color: #fff; /* Use white background for inputs */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -52,11 +52,11 @@
 
 
 .filter-button {
-    padding: 10px 20px;
+    padding: 8px 5px;
     background-color: #4ea74e;
     color: white;
     border: none;
-    border-radius: 25px; /* Rounded button edges */
+    border-radius: 15px; /* Rounded button edges */
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Add box shadow */

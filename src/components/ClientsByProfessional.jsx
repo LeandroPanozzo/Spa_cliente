@@ -173,11 +173,13 @@ export function ClientsByProfessional() {
   return (
     <div className="clients-by-professional-page">
       <h1 className="page-title">Clientes por Profesional</h1>
+<div className="button-group">
 
+</div>
       <div className="filters">
     <label className="filter-label">Selecciona un profesional:</label>
     <select className="filter-select" value={selectedProfessional} onChange={handleProfessionalChange}>
-        <option value="">Todos los profesionales</option>
+        <option value="">Todos</option>
         {professionals.map((professional) => (
             <option key={professional.id} value={professional.id}>
                 {professional.first_name} {professional.last_name}
