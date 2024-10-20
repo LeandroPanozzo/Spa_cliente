@@ -1,4 +1,3 @@
-// About.jsx
 import React from 'react';
 import './About.css';
 import teamImage from './img/team_image.jpg';
@@ -7,6 +6,7 @@ import spaInteriorImage from './img/spa_interior.jpg';
 export function About() {
   return (
     <div className="about-page">
+      {/* Hero Section 1 */}
       <div 
         className="hero-image-container" 
         style={{
@@ -14,37 +14,28 @@ export function About() {
           backgroundSize: 'cover', 
           backgroundPosition: 'center', 
           height: '100vh', 
-          width: '100vw', 
-          maxWidth: '100%', // Agrega esto
+          width: '100%', 
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'center', 
           flexDirection: 'column',
-          backgroundRepeat: 'no-repeat' // Agrega esta propiedad
+          backgroundRepeat: 'no-repeat'
         }}
       >
         <div className="texto-superpuesto">
-          <h1 className="lead text-center" style={{ fontSize: '3rem',padding: '20px', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)' }}>
+          <h1 className="lead text-center">
             CONOZCA NUESTRA HISTORIA
           </h1>
-          <p className="lead text-center" style={{ fontSize: '2rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)' }}>
+          <p className="lead text-center">
             Descubra la esencia de Sentirse Bien Spa
           </p>
-          <p className="parrafo-bienestar text-center" style={{ fontSize: '1.5rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)', maxWidth: '600px' }}>
+          <p className="parrafo-bienestar text-center" style={{color: 'white'}}>
             Más de una década dedicada a su bienestar y relajación.
           </p>
-          <div className="container" style={{  padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
-            <h2 className="lead text-center" style={{ fontSize: '3rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)' }}>Sobre Sentirse Bien Spa</h2>
-            <p className="parrafo-bienestar text-center" style={{ fontSize: '1.5rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)', maxWidth: '600px' }}>
-              Fundado en 2010, Sentirse Bien Spa nació con la misión de proporcionar
-              un oasis de tranquilidad en medio del ajetreo diario. Nuestro equipo
-              de expertos terapeutas y esteticistas se dedica a ofrecer
-              tratamientos personalizados que rejuvenecen cuerpo y mente.
-            </p>
-          </div>
         </div>
       </div>
 
+      {/* Hero Section 2 */}
       <div 
         className="hero-image-container" 
         style={{
@@ -52,32 +43,29 @@ export function About() {
           backgroundSize: 'cover', 
           backgroundPosition: 'center', 
           height: '100vh', 
-          width: '100vw', 
+          width: '100%', 
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'center', 
           flexDirection: 'column', 
           marginTop: '20px',
-          backgroundRepeat: 'no-repeat',
-          maxWidth: '100%', // Agrega esto
-          
+          backgroundRepeat: 'no-repeat'
         }}
       >
         <div className="texto-superpuesto">
-          <div className="container" style={{  padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
-            <h3 className="lead text-center" style={{ fontSize: '3rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)' }}>Nuestro Equipo</h3>
-            <p className="parrafo-bienestar" style={{ color: '#fff' }}>
-              Contamos con un equipo de profesionales altamente calificados y
-              apasionados por el bienestar. Cada miembro está comprometido con
-              proporcionar una experiencia excepcional y personalizada para
-              cada cliente.
+          <div className="container">
+            <h3 className="lead text-center">
+              Nuestro Equipo
+            </h3>
+            <p className="parrafo-bienestar text-center" style={{color: 'white'}}>
+              Contamos con un equipo de profesionales altamente calificados...
             </p>
           </div>
         </div>
       </div>
 
-      {/* Sección de valores */}
-      <div className="valores-section" style={{ padding: '50px 0' }}>
+      {/* Values Section */}
+      <div className="valores-section">
         <h3 className="text-center mb-4">Nuestros Valores</h3>
         <div className="row">
           <div className="col-md-4 mb-4">
@@ -109,4 +97,3 @@ export function About() {
     </div>
   );
 }
-
