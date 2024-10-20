@@ -138,7 +138,7 @@ export function Announcements() {
               <h3 className="announcement-title">{announcement.title}</h3>
               <p className="announcement-description">{announcement.content}</p>
               <p className="announcement-date">{announcement.date_description}</p>
-              { (isOwner || isSecretary) && <button onClick={() => handleDeleteAnnouncement(announcement.id)} className="delete-button">Eliminar</button>}
+              { (isOwner || isSecretary) && <button onClick={() => handleDeleteAnnouncement(announcement.id)} className="delete-button" style={{backgroundColor: 'red'}}>Eliminar</button>}
             </div>
           ))}
         </div>

@@ -99,14 +99,14 @@
   
   .announcement-title {
     font-size: 1.5rem;
-    color: #4ea74e;
+    color: #69a869;
     margin-bottom: 15px;
     font-weight: 600;
   }
   
   .announcement-description {
     font-size: 1rem;
-    color: #5ec75e;
+    color: #000000;
     margin-bottom: 20px;
     line-height: 1.6;
   }

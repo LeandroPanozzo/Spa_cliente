@@ -172,7 +172,7 @@ export function QueryAndResponseComponent() {
                   <h4 className="query-title">Asunto: {queryMapped.title}</h4>
                   <p className="query-info">Por: {queryMapped.user.first_name} {queryMapped.user.last_name}</p>
                   <p className="query-content">{queryMapped.content}</p>
-                  <button onClick={() => handleDeleteQueries(queryMapped.id)} className="delete-button">
+                  <button onClick={() => handleDeleteQueries(queryMapped.id)} className="delete-button" style={{backgroundColor: 'red', borderRadius: '6px', padding: '9px 15px'}}>
                     Eliminar
                   </button>
 

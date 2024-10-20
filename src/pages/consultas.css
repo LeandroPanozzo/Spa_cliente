@@ -83,17 +83,18 @@
     color: #666;
 }
 .toggle-button {
-    background-color: #007bff; /* Color de fondo del botón */
+    background-color: #2ab11e; /* Color de fondo del botón */
     color: white; /* Color del texto */
     padding: 10px 15px; /* Espaciado interno */
     border: none; /* Sin borde */
     border-radius: 4px; /* Esquinas redondeadas */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     transition: background-color 0.3s ease; /* Transición suave */
+    margin-left: 10px;
   }
   
   .toggle-button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    background-color: #29cf08; /* Color de fondo al pasar el mouse */
   }
   
   .delete-button {
@@ -107,7 +108,104 @@
   }
   
   .delete-button:hover {
-    background-color: #c82333; /* Color de fondo al pasar el mouse */
+    background-color: #fc3d50; /* Color de fondo al pasar el mouse */
+  }
+  .response-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .response-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: none;
+    min-height: 80px;
+  }
+  
+  .response-textarea:focus {
+    outline: none;
+    border-color: #4caf50; /* Cambiar a verde */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Efecto de sombra verde */
+  }
+  
+  .response-button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .response-button:hover {
+    background-color: #45a049; /* Tonalidad más oscura en hover */
+  }
+  .new-query-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f0f8f7;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .query-input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .query-textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+    min-height: 100px;
+  }
+  
+  .query-input:focus, .query-textarea:focus {
+    outline: none;
+    border-color: #4caf50; /* Verde */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra verde */
+  }
+  
+  .submit-button {
+    padding: 10px 10px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* Tonalidad más oscura en hover */
   }
   
 @media (max-width: 768px) {

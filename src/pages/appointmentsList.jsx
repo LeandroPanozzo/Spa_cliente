@@ -175,7 +175,7 @@ export function AppointmentsList() {
       <h1 className="page-title">
         {(isOwner || isProfessional || isSecretary) ? 'Lista de Citas' : 'Mis Citas'}
       </h1>
-      
+  
       {/* Mostrar errores si los hay */}
       {error && <p className="errorText">{error}</p>}
   
@@ -216,7 +216,7 @@ export function AppointmentsList() {
                       )}
                       <button 
                         onClick={() => handleDeleteAppointment(appointment.id)} 
-                        className="delete-button"
+                        className="delete-button" style={{backgroundColor: 'red'}}
                       >
                         Eliminar
                       </button>
@@ -230,75 +230,86 @@ export function AppointmentsList() {
       ) : (
         <>
           {/* Lista de citas del usuario */}
-          <ul className="appointments-list">
-            {appointments.map(appointment => (
-              <li key={appointment.id} className="appointment-item">
-                <h4 className="professionalText">Profesional: {appointment.professional.username}</h4>
-                <h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
-                <p className="dateText">{new Date(appointment.appointment_date).toLocaleString()}</p>
-  
-                {appointment.payment ? (
-                  <a
-                    href={`${API_URL}/sentirseBien/api/v1/appointments/${appointment.id}/download_invoice/`}
-                    className="pay-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Descargar Factura
-                  </a>
-                ) : (
-                  <button onClick={() => handlePayment(appointment.id)} className="pay-button">
-                    Pagar
-                  </button>
-                )}
-                <button 
-                  onClick={() => handleDeleteAppointment(appointment.id)} 
-                  className="delete-button"
+          {appointments.map(appointment => (
+            <div key={appointment.id} className="client-container">
+              <div className="client-card">
+                {/* Mostrar nombre del servicio como título */}
+                <h2 
+                  onClick={() => setOpenUsers(prev => ({ ...prev, [appointment.id]: !prev[appointment.id] }))} 
+                  className="client-title"
                 >
-                  Eliminar
-                </button>
-              </li>
-            ))}
-          </ul>
+                  {appointment.services_names.join(', ')}
+                </h2>
+                <Collapse isOpened={!!openUsers[appointment.id]}>
+                  <ul className="appointments-list">
+                    <li className="appointment-item">
+                      <h4 className="professionalText">Profesional: {appointment.professional.username}</h4>
+                      <h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
+                      <p className="dateText">{new Date(appointment.appointment_date).toLocaleString()}</p>
   
-          <div class="create-appointment-page">
-  <h2 class="create-appointment-title">Crear Cita</h2>
-  <form onSubmit={handleAppointmentSubmit} className="create-appointment-form">
-    <Select
-      value={selectedProfessional}
-      onChange={setSelectedProfessional}
-      options={professionals}
-      className="create-select-input"
-      placeholder="Seleccionar Profesional"
-      required
-    />
-    <Select
-      isMulti
-      value={selectedServices}
-      onChange={setSelectedServices}
-      options={services}
-      className="create-select-input"
-      placeholder="Seleccionar Servicios"
-      required
-    />
-    <input
-      type="datetime-local"
-      value={appointmentDate}
-      onChange={handleDateChange}
-      className="create-date-input"
-      required
-    />
-    <button type="submit" className="create-submit-button">Crear Cita</button>
-  </form>
-</div>
-
-
+                      {appointment.payment ? (
+                        <a
+                          href={`${API_URL}/sentirseBien/api/v1/appointments/${appointment.id}/download_invoice/`}
+                          className="pay-button"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Descargar Factura
+                        </a>
+                      ) : (
+                        <button onClick={() => handlePayment(appointment.id)} className="pay-button">
+                          Pagar
+                        </button>
+                      )}
+                      <button 
+                        onClick={() => handleDeleteAppointment(appointment.id)} 
+                        className="delete-button" style={{backgroundColor: 'red'}}
+                      >
+                        Eliminar
+                      </button>
+                    </li>
+                  </ul>
+                </Collapse>
+              </div>
+            </div>
+          ))}
+  
+          <div className="create-appointment-page">
+            <h2 className="create-appointment-title">Crear Cita</h2>
+            <form onSubmit={handleAppointmentSubmit} className="create-appointment-form">
+              <Select
+                value={selectedProfessional}
+                onChange={setSelectedProfessional}
+                options={professionals}
+                className="create-select-input"
+                placeholder="Seleccionar Profesional"
+                required
+              />
+              <Select
+                isMulti
+                value={selectedServices}
+                onChange={setSelectedServices}
+                options={services}
+                className="create-select-input"
+                placeholder="Seleccionar Servicios"
+                required
+              />
+              <input
+                type="datetime-local"
+                value={appointmentDate}
+                onChange={handleDateChange}
+                className="create-date-input"
+                required
+              />
+              <button type="submit" className="create-submit-button">Crear Cita</button>
+            </form>
+          </div>
         </>
       )}
-      
+  
       {/* Contenedor de notificaciones */}
       <ToastContainer />
     </div>
   );
   
-}
+}  

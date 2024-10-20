@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../components/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify'; // Importa ToastContainer y toast
-import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos de toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
-
 
 export function PaymentPage() {
   const { appointmentId } = useParams();
@@ -20,10 +19,9 @@ export function PaymentPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Obtener tipos de pago al cargar el componente
     const fetchPaymentTypes = async () => {
       try {
-        const response = await axios.get(`${API_URL}/sentirseBien/api/v1/payment-types/`); // Asegúrate de que esta URL sea correcta
+        const response = await axios.get(`${API_URL}/sentirseBien/api/v1/payment-types/`);
         setPaymentTypes(response.data);
       } catch (error) {
         setError('Error al cargar los tipos de pago');
@@ -33,8 +31,31 @@ export function PaymentPage() {
     fetchPaymentTypes();
   }, []);
 
+  const validateInputs = () => {
+    const cardRegex = /^[0-9]{16}$/; // 16 dígitos
+    const pinRegex = /^[0-9]{4,6}$/; // 4 a 6 dígitos
+
+    if (!cardRegex.test(creditCard)) {
+      setError('El número de tarjeta debe tener 16 dígitos y contener solo números.');
+      return false;
+    }
+
+    if (!pinRegex.test(pin)) {
+      setError('El PIN debe tener entre 4 y 6 dígitos y contener solo números.');
+      return false;
+    }
+
+    setError(''); // Limpiar el error si las validaciones son correctas
+    return true;
+  };
+
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateInputs()) {
+      return; // Si la validación falla, no proceder
+    }
+
     try {
       await axios.post(`${API_URL}/sentirseBien/api/v1/payments/`, {
         appointment: appointmentId,
@@ -45,7 +66,7 @@ export function PaymentPage() {
       toast.success('Pago Exitoso!');
       navigate('/appointments');
     } catch (error) {
-      setError('La tarjeta debe tener 16 digitos');
+      setError('Error al procesar el pago.');
     }
   };
 
@@ -84,9 +105,7 @@ export function PaymentPage() {
 
   return (
     <div style={styles.container}>
-      
       <h1 style={styles.title}>Completar Pago</h1>
-      
       <form onSubmit={handlePaymentSubmit} style={styles.form}>
         <div>
           <label style={styles.label}>Número de Tarjeta</label>
@@ -124,6 +143,7 @@ export function PaymentPage() {
           <button type="submit" style={styles.submitButton}>Pagar</button>
         </div>
       </form>
+      <ToastContainer /> {/* Agrega el componente ToastContainer aquí */}
     </div>
   );
 }
@@ -141,6 +161,8 @@ const styles = {
     textAlign: 'center',
     fontSize: '32px',
     marginBottom: '20px',
+    color: '#ff7f8a',
+    fontFamily: 'Arial, sans-serif',
   },
   form: {
     marginTop: '20px',
@@ -157,7 +179,7 @@ const styles = {
     padding: '10px 20px',
     fontSize: '16px',
     borderRadius: '6px',
-    backgroundColor: '#007bff',
+    backgroundColor: '#00be3f',
     color: '#fff',
     border: 'none',
     cursor: 'pointer',
@@ -171,7 +193,7 @@ const styles = {
     fontWeight: 'bold',
   },
   buttonContainer: {
-    textAlign: 'center', // Estilo para centrar el botón
-    marginTop: '20px', // Margen superior para separarlo del formulario
+    textAlign: 'center',
+    marginTop: '20px',
   },
 };
