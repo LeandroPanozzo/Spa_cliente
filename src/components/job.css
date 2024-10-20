@@ -7,10 +7,8 @@
     margin-top: 0px;
 }
 
-
-
 .hero-section {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../pages/img/trabajo_equipo.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../pages/img/trabajo_equipo.jpg');
     background-size: cover;
     background-position: center;
     height: 300px;
@@ -51,11 +49,11 @@
 }
 
 .lead {
-    color: #ffffff; /* Cambia el verde a blanco */
+    color: #ffffff;
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Opcional: deja la sombra de texto para que se vea bien sobre la imagen */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .parrafo-bienestar {
@@ -93,11 +91,9 @@
 
 .job-description li {
     margin-bottom: 10px;
-
 }
 
 .application-section p {
-
     margin-bottom: 20px;
 }
 
@@ -128,7 +124,7 @@
     box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
 }
 
-/* Estilos para dispositivos móviles */
+/* Estilos para dispositivos móviles y tabletas */
 @media (max-width: 1024px) {
     .hero-section {
         height: 250px;

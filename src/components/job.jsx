@@ -4,14 +4,22 @@ import './job.css';
 export function Job() {
     return (
         <div className="job-page">
-            <div >
-                <div className="hero-section">
-                    <div className="hero-overlay"></div>
-                    <div className="hero-content">
+            <div>
+
+                    <div className="hero-section" style={{
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center', 
+          height: '100vh', 
+          width: '100%', 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          flexDirection: 'column',
+          backgroundRepeat: 'no-repeat',
+        }}>
                         <h1 className="lead">ÚNETE A NUESTRO EQUIPO</h1>
                         <p className="parrafo-bienestar text-center" style={{ fontSize: '1.5rem', color: '#fff', textShadow: '0 0 5px rgba(0, 0, 0, 0.5)', maxWidth: '600px' }}>Estamos buscando profesionales apasionados para unirse a nuestra clínica de masajes.</p>
                     </div>
-                </div>
                 <div className="container">
                     <h2 className="text-center mb-4">Oportunidades de Empleo</h2>
                     <div className="job-description">
