@@ -9,7 +9,8 @@ import packCompletoImage from './img/packCompletoImage.jpg';
 import relajacionImage from './img/relajacion_img.jpg';
 import sobreNosotrosImage from './img/sobreNosotrosNoautenticatedIMG.jpg';
 import inicioImage from './img/InicioNoAutenticadoIMG.jpg';
-import { Navigator } from '../components/Navigator'; // Importar el componente Navigator
+import Navigator from '../components/Navigator';
+ // Importar el componente Navigator
 
 export function TaskPag() {
   const { isAuthenticated, isOwner, isProfessional, isSecretary } = useAuth(); // Obtén el estado de autenticación y roles
