@@ -5,7 +5,6 @@ import { useAuth } from '../components/AuthContext';
 import { ToastContainer, toast } from 'react-toastify'; // Importa ToastContainer y toast
 import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos de toast
 
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 export function Register() {
@@ -43,7 +42,6 @@ export function Register() {
     }
 
     try {
-      console.log(cuit)
       const response = await axios.post(`${API_URL}/sentirseBien/api/v1/register/`, {
         username,
         first_name,
@@ -61,7 +59,9 @@ export function Register() {
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
       toast.success('Usuario creado exitosamente!');
       login();
-      navigate('/sentirseBien');
+
+      // Redirigir al usuario después del registro exitoso
+      navigate('/'); // Cambia esta ruta si necesitas otra
     } catch (error) {
       console.error('Error en el registro:', error.response?.data || error.message);
       
@@ -80,8 +80,7 @@ export function Register() {
         if (errors.cuit && errors.cuit.length > 0) {
           errorMessages.push('El CUIT deben ser exactamente 11 dígitos numéricos.');
         }
-        
-        
+
         // Si no hay mensajes específicos, mostrar mensaje genérico
         setMessages(errorMessages.length > 0 ? errorMessages : ['Hubo un error en el registro']);
       } else {
