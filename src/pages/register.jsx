@@ -91,7 +91,7 @@ export function Register() {
 
   return (
     <div style={styles.container}>
-      <h2>Registrarse</h2>
+      <h2 style={styles.title}>Registrarse</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
         <div style={styles.inputGroup}>
           <label htmlFor="username">Nombre de Usuario:</label>
@@ -224,6 +224,9 @@ const styles = {
     padding: '5px',
     borderRadius: '4px',
     border: '1px solid #ccc',
+    boxSizing: 'border-box', // Para que el padding se mantenga dentro del ancho definido
+    margin: '0 auto', // Centra el campo dentro del contenedor
+    maxWidth: '100%', // Asegura que el input no crezca más allá de su contenedor
   },
   button: {
     padding: '10px',
@@ -251,4 +254,8 @@ const styles = {
     textAlign: 'center',
     marginTop: '10px',
   },
+  title: {
+    textAlign: 'center', // Alinea el título al centro
+    marginBottom: '20px', // Espacio abajo para separar el título del formulario
+  }
 };
