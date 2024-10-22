@@ -111,8 +111,8 @@ export function AppointmentsList() {
     const selectedDate = new Date(value);
     const today = new Date();
 
-    if (selectedDate < today.setDate(today.getDate() + 1)) {
-      setError('La fecha debe ser al menos para el día siguiente.');
+    if (selectedDate < today.setDate(today.getDate() + 2)) {
+      setError('La fecha debe ser al menos para dos dias despues de la fecha actual.');
       return;
     }
 
@@ -123,7 +123,7 @@ export function AppointmentsList() {
     }
 
     const hour = selectedDate.getHours();
-    if (hour < 9 || hour > 18) {
+    if (hour < 9 || hour > 17) {
       setError('Las citas solo pueden ser entre las 9 AM y 6 PM.');
       return;
     }
@@ -172,6 +172,30 @@ export function AppointmentsList() {
     }
     acc[fullName].push(appointment);
     return acc;
+  }, {});
+
+  const groupedAppointmentsByDate = appointments
+  .reduce((acc, appointment) => {
+    const appointmentDate = new Date(appointment.appointment_date);
+
+    // Agrupar por fecha (solo año, mes y día)
+    const formattedDate = appointmentDate.toISOString().split('T')[0];  // Formato YYYY-MM-DD
+
+    if (!acc[formattedDate]) {
+      acc[formattedDate] = [];
+    }
+    acc[formattedDate].push(appointment);
+
+    return acc;
+  }, {});
+
+    // Ordenar por fecha (del más antiguo al más reciente)
+  const sortedGroupedAppointments = Object.keys(groupedAppointmentsByDate)
+  .sort((a, b) => new Date(a) - new Date(b))  // Ordenar fechas
+  .reduce((sortedAcc, date) => {
+    sortedAcc[date] = groupedAppointmentsByDate[date]
+      .sort((a, b) => new Date(a.appointment_date) - new Date(b.appointment_date));  // Ordenar citas dentro de cada fecha por hora
+    return sortedAcc;
   }, {});
 
   return (
@@ -234,88 +258,98 @@ export function AppointmentsList() {
         ))
       ) : (
         <>
-          {/* Lista de citas del usuario */}
-          {appointments.map(appointment => (
-            <div key={appointment.id} className="client-container">
-              <div className="client-card">
-                {/* Mostrar nombre del servicio como título */}
-                <h2 
-                  onClick={() => setOpenUsers(prev => ({ ...prev, [appointment.id]: !prev[appointment.id] }))} 
-                  className="client-title"
-                >
-                  {appointment.services_names.join(', ')}
+  {/* Lista de citas del usuario */}
+  {Object.keys(sortedGroupedAppointments).map(formattedDate => (
+    <div key={formattedDate} className="client-container">
+      <div className="client-card">
+        {/* Mostrar la fecha de la cita como título */}
+        <h2 
+          onClick={() => setOpenUsers(prev => ({ ...prev, [formattedDate]: !prev[formattedDate] }))} 
+          className="client-title"
+        >
+          {formattedDate}  {/* Mostrar la fecha de la cita */}
+        </h2>
+        <Collapse isOpened={!!openUsers[formattedDate]}>
+          <ul className="appointments-list">
+            {/* Mostrar citas ordenadas por hora */}
+            {sortedGroupedAppointments[formattedDate].map(appointment => (
+              <li key={appointment.id} className="appointment-item">
+                <h4 className="professionalText">
+                  Profesional: {appointment.professional.first_name} {appointment.professional.last_name}
+                </h4>
+                <h2 className="serviceText">
+                  Servicios: {appointment.services_names.join(', ')}
                 </h2>
-                <Collapse isOpened={!!openUsers[appointment.id]}>
-                  <ul className="appointments-list">
-                    <li className="appointment-item">
-                    <h4 className="professionalText">
-  Profesional: {appointment.professional.first_name} {appointment.professional.last_name}
-</h4>
-                      <h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
-                      <p className="dateText">{new Date(appointment.appointment_date).toLocaleString()}</p>
-  
-                      {appointment.payment ? (
-                        <a
-                          href={`${API_URL}/sentirseBien/api/v1/appointments/${appointment.id}/download_invoice/`}
-                          className="pay-button"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Descargar Factura
-                        </a>
-                      ) : (
-                        <button onClick={() => handlePayment(appointment.id)} className="pay-button">
-                          Pagar
-                        </button>
-                      )}
-                      <button 
-                        onClick={() => handleDeleteAppointment(appointment.id)} 
-                        className="delete-button" style={{backgroundColor: 'red'}}
-                      >
-                        Eliminar
-                      </button>
-                    </li>
-                  </ul>
-                </Collapse>
-              </div>
-            </div>
-          ))}
-  
-          <div className="create-appointment-page">
-            <h2 className="create-appointment-title">Crear Cita</h2>
-            <form onSubmit={handleAppointmentSubmit} className="create-appointment-form">
-              <Select
-                value={selectedProfessional}
-                onChange={setSelectedProfessional}
-                options={professionals}
-                className="create-select-input"
-                placeholder="Seleccionar Profesional"
-                required
-              />
-              <Select
-                isMulti
-                value={selectedServices}
-                onChange={setSelectedServices}
-                options={services}
-                className="create-select-input"
-                placeholder="Seleccionar Servicios"
-                required
-              />
-              <input
-                type="datetime-local"
-                value={appointmentDate}
-                onChange={handleDateChange}
-                className="create-date-input"
-                required
-              />
-              <button type="submit" className="create-submit-button">Crear Cita</button>
-            </form>
-          </div>
-        </>
+                <p className="dateText">
+                  {/* Mostrar hora en formato 24 horas sin AM/PM */}
+                  {new Date(appointment.appointment_date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </p>
+
+                {appointment.payment ? (
+                  <a
+                    href={`${API_URL}/sentirseBien/api/v1/appointments/${appointment.id}/download_invoice/`}
+                    className="pay-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Descargar Factura
+                  </a>
+                ) : (
+                  <button onClick={() => handlePayment(appointment.id)} className="pay-button">
+                    Pagar
+                  </button>
+                )}
+                <button 
+                  onClick={() => handleDeleteAppointment(appointment.id)} 
+                  className="delete-button" style={{ backgroundColor: 'red' }}
+                >
+                  Eliminar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </Collapse>
+      </div>
+    </div>
+  ))}
+
+  <div className="create-appointment-page">
+    <h2 className="create-appointment-title">Crear Cita</h2>
+    <form onSubmit={handleAppointmentSubmit} className="create-appointment-form">
+      <Select
+        value={selectedProfessional}
+        onChange={setSelectedProfessional}
+        options={professionals}
+        className="create-select-input"
+        placeholder="Seleccionar Profesional"
+        required
+      />
+      <Select
+        isMulti
+        value={selectedServices}
+        onChange={setSelectedServices}
+        options={services}
+        className="create-select-input"
+        placeholder="Seleccionar Servicios"
+        required
+      />
+      <input
+        type="datetime-local"
+        value={appointmentDate}
+        onChange={handleDateChange}
+        className="create-date-input"
+        required
+      />
+      <button type="submit" className="create-submit-button">Crear Cita</button>
+    </form>
+    <p className="appointment-info-text">
+  Puedes seleccionar citas solo para días hábiles (de lunes a viernes), con al menos 2 días de antelación, entre las 9 AM y 6 PM.
+</p>
+  </div>
+</>
       )}
   
-      {/* Contenedor de notificaciones */}
-      <ToastContainer />
+      
     </div>
   );
   

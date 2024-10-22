@@ -32,6 +32,13 @@
     transform: translateY(-5px); /* Eleva el formulario al pasar el ratón */
 }
 
+.appointment-info-text {
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: 20px;   /* Espaciado superior para separar el texto del formulario */
+    font-size: 14px;    /* Ajusta el tamaño de la fuente */
+    color: #555555;    /* Color del texto (puedes cambiarlo a lo que prefieras) */
+  }
+
 .create-select-input, .create-date-input {
     width: 100%; /* Asegura que todos los inputs ocupen el ancho completo */
     padding: 12px; /* Espaciado interno */
