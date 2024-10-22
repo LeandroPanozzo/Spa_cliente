@@ -21,6 +21,7 @@ export function AppointmentsList() {
   const { isAuthenticated, logout, isSecretary, isOwner, isProfessional } = useAuth();
   const navigate = useNavigate();
   const [openUsers, setOpenUsers] = useState({});
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -46,7 +47,12 @@ export function AppointmentsList() {
   const fetchServices = async () => {
     try {
       const response = await axios.get(`${API_URL}/sentirseBien/api/v1/services/`);
-      setServices(response.data.map(service => ({ value: service.id, label: service.name })));
+      // Añadimos los precios a las opciones del select
+      setServices(response.data.map(service => ({
+        value: service.id,
+        label: `${service.name} - $${service.price}`,  // Mostrar precio en la etiqueta
+        price: service.price  // Guardar el precio en el objeto
+      })));
     } catch {
       setError('Error al cargar los servicios');
     }
@@ -130,6 +136,14 @@ export function AppointmentsList() {
 
     setError('');
     setAppointmentDate(value);
+  };
+
+  const handleServiceChange = (selectedOptions) => {
+    setSelectedServices(selectedOptions);
+    
+    // Calcular el total sumando los precios de los servicios seleccionados
+    const newTotalPrice = selectedOptions.reduce((total, service) => total + Number(service.price), 0);
+    setTotalPrice(newTotalPrice);
   };
 
   // Axios interceptors for token management
@@ -327,7 +341,7 @@ export function AppointmentsList() {
       <Select
         isMulti
         value={selectedServices}
-        onChange={setSelectedServices}
+        onChange={handleServiceChange}
         options={services}
         className="create-select-input"
         placeholder="Seleccionar Servicios"
@@ -340,6 +354,9 @@ export function AppointmentsList() {
         className="create-date-input"
         required
       />
+      <div className="total-price" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+        <h3>Total: ${totalPrice}</h3>
+      </div>
       <button type="submit" className="create-submit-button">Crear Cita</button>
     </form>
     <p className="appointment-info-text">

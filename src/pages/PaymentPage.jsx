@@ -9,12 +9,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export function PaymentPage() {
   const { appointmentId } = useParams();
-  console.log('Appointment ID:', appointmentId);
   const [creditCard, setCreditCard] = useState('');
   const [pin, setPin] = useState('');
   const [paymentType, setPaymentType] = useState('');
   const [paymentTypes, setPaymentTypes] = useState([]);
   const [error, setError] = useState('');
+  const [totalPayment, setTotalPayment] = useState(0); // Estado para almacenar el total del pago
   const { isAuthenticated, isStaff, logout, isSecretary } = useAuth();
   const navigate = useNavigate();
 
@@ -28,8 +28,20 @@ export function PaymentPage() {
       }
     };
 
+    const fetchAppointmentDetails = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/sentirseBien/api/v1/appointments/${appointmentId}/`);
+        // Calcular el total del pago sumando los precios de los servicios
+        const total = response.data.services_prices.reduce((acc, price) => acc + parseFloat(price), 0);
+        setTotalPayment(total); // Asignar el total calculado al estado
+      } catch (error) {
+        setError('Error al cargar los detalles de la cita');
+      }
+    };
+
     fetchPaymentTypes();
-  }, []);
+    fetchAppointmentDetails();
+  }, [appointmentId]);
 
   const validateInputs = () => {
     const cardRegex = /^[0-9]{16}$/; // 16 dígitos
@@ -138,19 +150,25 @@ export function PaymentPage() {
             ))}
           </select>
         </div>
+
+        {/* Mostrar el total a pagar */}
+        <div style={styles.totalAmountContainer}>
+          <h3>Total a pagar: ${totalPayment.toFixed(2)}</h3>
+        </div>
+
         {error && <p style={styles.errorText}>{error}</p>}
         <div style={styles.buttonContainer}>
           <button type="submit" style={styles.submitButton}>Pagar</button>
         </div>
       </form>
-      <p style={styles.warningText}>Por favor, preséntese a la cita con la factura de pago.</p> {/* Texto en rojo agregado */}
+      <p style={styles.warningText}>Por favor, preséntese a la cita con la factura de pago.</p>
     </div>
   );
 }
 
 const styles = {
   warningText: {
-    color: 'red', // Estilo del texto en rojo
+    color: 'red', 
     textAlign: 'center',
     fontSize: '18px',
     marginTop: '20px',
@@ -202,4 +220,8 @@ const styles = {
     textAlign: 'center',
     marginTop: '20px',
   },
+  totalAmountContainer: {
+    textAlign: 'center',
+    marginTop: '20px',
+  }
 };
