@@ -55,11 +55,16 @@ export function AppointmentsList() {
   const fetchProfessionals = async () => {
     try {
       const response = await axios.get(`${API_URL}/sentirseBien/api/v1/professionals/`);
-      setProfessionals(response.data.map(professional => ({ value: professional.id, label: professional.username })));
+      setProfessionals(response.data.map(professional => ({
+        value: professional.id,
+        label: `${professional.first_name} ${professional.last_name}` // Combina el nombre y el apellido correctamente
+      })));
     } catch {
       setError('Error al cargar los profesionales');
     }
   };
+  
+  
 
   const handleAppointmentSubmit = async (e) => {
     e.preventDefault();
@@ -194,8 +199,8 @@ export function AppointmentsList() {
                 <ul className="appointments-list">
                   {groupedAppointments[fullName].map(appointment => (
                     <li key={appointment.id} className="appointment-item">
-                      <h4 className="professionalText">Profesional: {appointment.professional.username}</h4>
-                      <h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
+<h4 className="professionalText">Profesional: {appointment.professional.last_name} {appointment.professional.first_name}</h4>
+<h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
                       <p className="dateText">
                         {new Date(appointment.appointment_date).toLocaleString()}
                       </p>
@@ -243,7 +248,9 @@ export function AppointmentsList() {
                 <Collapse isOpened={!!openUsers[appointment.id]}>
                   <ul className="appointments-list">
                     <li className="appointment-item">
-                      <h4 className="professionalText">Profesional: {appointment.professional.username}</h4>
+                    <h4 className="professionalText">
+  Profesional: {appointment.professional.first_name} {appointment.professional.last_name}
+</h4>
                       <h2 className="serviceText">{appointment.services_names.join(', ')}</h2>
                       <p className="dateText">{new Date(appointment.appointment_date).toLocaleString()}</p>
   

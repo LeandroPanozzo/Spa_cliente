@@ -160,7 +160,7 @@ export function PaymentList() {
             <ul style={styles.list}>
               {payments.map((payment) => (
                 <li key={payment.id} style={styles.paymentCard}>
-                  <p style={styles.text}>Cliente: {payment.appointment.client_first_name} {payment.appointment.client_last_name}</p>
+                  <p style={styles.text}>Cliente: {payment.client_first_name} {payment.client_last_name}</p>
                   <p style={styles.text}>Total Pagado: {payment.total_payment}</p>
                   <p style={styles.text}>Tipo de Pago: {payment.payment_type}</p>
                   <p style={styles.text}>Fecha de Pago: {new Date(payment.payment_date).toLocaleDateString()}</p>
