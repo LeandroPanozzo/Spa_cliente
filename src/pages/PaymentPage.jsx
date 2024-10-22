@@ -143,12 +143,18 @@ export function PaymentPage() {
           <button type="submit" style={styles.submitButton}>Pagar</button>
         </div>
       </form>
-      <ToastContainer /> {/* Agrega el componente ToastContainer aquí */}
+      <p style={styles.warningText}>Por favor, preséntese a la cita con la factura de pago.</p> {/* Texto en rojo agregado */}
     </div>
   );
 }
 
 const styles = {
+  warningText: {
+    color: 'red', // Estilo del texto en rojo
+    textAlign: 'center',
+    fontSize: '18px',
+    marginTop: '20px',
+  },
   container: {
     maxWidth: '700px',
     margin: '20px auto',
