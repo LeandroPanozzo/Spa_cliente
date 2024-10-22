@@ -78,40 +78,49 @@ export function PaymentList() {
   };
 
   // Generar PDF
-  const generatePDF = async () => {
-    const doc = new jsPDF();
-    const pageWidth = doc.internal.pageSize.width;
+  // Generar PDF
+const generatePDF = async () => {
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.width;
 
-    try {
-      const logoBase64 = await convertImageToBase64(logo);
-      const logoWidth = 70;
-      const logoHeight = 30;
-      const xPosLogo = (pageWidth - logoWidth) / 2;
+  try {
+    const logoBase64 = await convertImageToBase64(logo);
+    const logoWidth = 70;
+    const logoHeight = 30;
+    const xPosLogo = (pageWidth - logoWidth) / 2;
 
-      doc.addImage(logoBase64, 'PNG', xPosLogo, 10, logoWidth, logoHeight);
+    doc.addImage(logoBase64, 'PNG', xPosLogo, 10, logoWidth, logoHeight);
 
-      const title = 'Informe de Ganancias por Tipo de Pago';
-      const titleX = (pageWidth - doc.getTextWidth(title)) / 2;
-      doc.text(title, titleX, 50);
+    const title = 'Informe de Ganancias por Tipo de Pago';
+    const titleX = (pageWidth - doc.getTextWidth(title)) / 2;
+    doc.text(title, titleX, 50);
 
-      const groupedPayments = groupPaymentsByType();
-      const tableData = Object.keys(groupedPayments).map((type) => [
-        type,
-        groupedPayments[type].count,
-        groupedPayments[type].total.toFixed(2),
-      ]);
+    // Mostrar las fechas de filtro
+    const filterText = `Desde: ${startDate} Hasta: ${endDate}`;
+    const filterTextX = (pageWidth - doc.getTextWidth(filterText)) / 2;
+    doc.text(filterText, filterTextX, 60); // Ajustar la posición y el tamaño
 
-      doc.autoTable({
-        head: [['Tipo de Pago', 'Número de Pagos', 'Total Ganado']],
-        body: tableData,
-        startY: 60,
-      });
+    const groupedPayments = groupPaymentsByType();
+    const tableData = Object.keys(groupedPayments).map((type) => [
+      type,
+      groupedPayments[type].count,
+      groupedPayments[type].total.toFixed(2),
+    ]);
 
-      return doc; // Devolver el objeto jsPDF
-    } catch (error) {
-      console.error('Error al agregar el logo al PDF:', error);
-    }
-  };
+    // Ajustar startY para evitar sobreposición con el filtro
+    const tableStartY = 70; // Definir un espacio suficiente después del texto de fechas
+
+    doc.autoTable({
+      head: [['Tipo de Pago', 'Número de Pagos', 'Total Ganado']],
+      body: tableData,
+      startY: tableStartY, // Ajustar la posición de la tabla
+    });
+
+    return doc; // Devolver el objeto jsPDF
+  } catch (error) {
+    console.error('Error al agregar el logo al PDF:', error);
+  }
+};
 
   // Imprimir PDF
   const printPDF = async () => {
