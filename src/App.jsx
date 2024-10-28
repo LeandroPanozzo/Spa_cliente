@@ -21,6 +21,7 @@ import { ProfessionalAppointmentsList } from './pages/ProfessionalAppointmentsLi
 import { PaymentList } from './pages/PaymentList';
 import { PaymentPage } from './pages/PaymentPage';
 import { ServicesList } from './pages/servicesPage'
+import { UserEdit } from  './pages/userEdit'
 import { ToastContainer, toast } from 'react-toastify'; // Importa ToastContainer y toast
 import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos de toast
 
