@@ -59,9 +59,11 @@ export const Navigator = forwardRef((props, ref) => {
               <>
                 <Link to="/clients" className="list-group-item">Listado de Usuarios</Link>
                 <Link to="/clients-by-day" className="list-group-item">Clientes por Día</Link>
-                <Link to="/clients-by-professional" className="list-group-item">Clientes por Profesional</Link>
                 <Link to="/services" className="list-group-item">Lista y Creación de Servicios</Link>
               </>
+            )}
+            {(isOwner || isProfessional) && (
+              <Link to="/clients-by-professional" className="list-group-item">Clientes por Profesional</Link>
             )}
             {isProfessional && (
               <Link to="/appointments-by-professional" className="list-group-item">Servicios a Prestar</Link>
@@ -77,6 +79,7 @@ export const Navigator = forwardRef((props, ref) => {
             )}
             <Link to="/commentsList" className="list-group-item">Comentarios</Link>
             <Link to="/announcements" className="list-group-item">Anuncios</Link>
+            <Link to="/user" className="list-group-item">Perfil</Link>
           </div>
         </div>
       </div>

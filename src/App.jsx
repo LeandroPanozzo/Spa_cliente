@@ -59,6 +59,7 @@ function App() {
               <Route path="/commentsList" element={<CommentsList />} />
               <Route path="/contact" element={<QueryAndResponseComponent />} />
               <Route path="/services" element={<ServicesList />} />
+              <Route path="/user" element={<UserEdit />} />
               
             </Routes>
           </LayoutCustom>

@@ -17,7 +17,7 @@ export function ClientsByProfessional() {
   const [endDate, setEndDate] = useState("");
   const [expandedProfessional, setExpandedProfessional] = useState(null);  
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isProfessional, user } = useAuth(); // Asegúrate de tener el usuario en el contexto
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -39,9 +39,10 @@ export function ClientsByProfessional() {
 
   const fetchClientsByProfessional = async () => {
     try {
+      const professionalId = isProfessional ? user.id : selectedProfessional; // Usar el ID del usuario si es profesional
       const response = await axios.get(`${API_URL}/sentirseBien/api/v1/clients-by-professional/`, {
         params: {
-          professional_id: selectedProfessional,
+          professional_id: professionalId,
           start_date: startDate,
           end_date: endDate
         }
@@ -173,34 +174,38 @@ export function ClientsByProfessional() {
   return (
     <div className="clients-by-professional-page">
       <h1 className="page-title">Clientes por Profesional</h1>
-<div className="button-group">
-
-</div>
+      <div className="button-group"></div>
       <div className="filters">
-    <label className="filter-label">Selecciona un profesional:</label>
-    <select className="filter-select" value={selectedProfessional} onChange={handleProfessionalChange}>
-        <option value="">Todos</option>
-        {professionals.map((professional) => (
-            <option key={professional.id} value={professional.id}>
-                {professional.first_name} {professional.last_name}
+        <label className="filter-label">Selecciona un profesional:</label>
+        {isProfessional ? (
+          <select className="filter-select" value={user.id} disabled>
+            <option value={user.id}>
+              {user.first_name} {user.last_name}
             </option>
-        ))}
-    </select>
+          </select>
+        ) : (
+          <select className="filter-select" value={selectedProfessional} onChange={handleProfessionalChange}>
+            <option value="">Todos</option>
+            {professionals.map((professional) => (
+              <option key={professional.id} value={professional.id}>
+                {professional.first_name} {professional.last_name}
+              </option>
+            ))}
+          </select>
+        )}
 
-    <label className="filter-label">Fecha de inicio:</label>
-    <input className="filter-input" type="date" value={startDate} onChange={handleStartDateChange} />
+        <label className="filter-label">Fecha de inicio:</label>
+        <input className="filter-input" type="date" value={startDate} onChange={handleStartDateChange} />
 
-    <label className="filter-label">Fecha de fin:</label>
-    <input className="filter-input" type="date" value={endDate} onChange={handleEndDateChange} />
+        <label className="filter-label">Fecha de fin:</label>
+        <input className="filter-input" type="date" value={endDate} onChange={handleEndDateChange} />
 
-    <div className="button-groupp">
-    <button className="filter-button" onClick={fetchClientsByProfessional}>Filtrar </button>
-    <button className="filter-button" onClick={downloadPDF}>Descargar PDF</button>
-    <button className="filter-button" onClick={printPDF}>Imprimir PDF</button>
-</div>
-
-</div>
-
+        <div className="button-group">
+          <button className="filter-button" onClick={fetchClientsByProfessional}>Filtrar </button>
+          <button className="filter-button" onClick={downloadPDF}>Descargar PDF</button>
+          <button className="filter-button" onClick={printPDF}>Imprimir PDF</button>
+        </div>
+      </div>
 
       <div className="professionals-container">
         {Object.keys(clientsByProfessional).map((professional) => (
