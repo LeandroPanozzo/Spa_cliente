@@ -95,6 +95,35 @@
   color: #000000;
   font-size: 0.9rem; /* Ajusta el tamaño del texto para pantallas más pequeñas */
 }
+.footer-download {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.download-link {
+  display: inline-block;
+  background-color: #ff7f8a; /* Color principal del botón */
+  color: #ffffff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto de elevación */
+}
+
+.download-link:hover {
+  background-color: #fc9ba9; /* Color más oscuro al hacer hover */
+  transform: translateY(-3px); /* Efecto de elevación */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensificación de la sombra */
+}
+
+.download-link:active {
+  background-color: #1e7e34; /* Color para estado activo */
+  transform: translateY(1px); /* Ligeramente hacia abajo para simular pulsación */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduce la sombra al hacer clic */
+}
 
 @media (max-width: 768px) {
   .footer-content {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram } from 'react-icons/fa'; // Importar íconos
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import './Footer.css';
 
 export function Footer() {
@@ -36,8 +36,21 @@ export function Footer() {
         </div>
       </div>
 
+      <div className="footer-download">
+        <h3>Descarga la aplicación aquí</h3>
+        <a
+          href="https://www.mediafire.com/file/40cesbt1ce6fwgq/application-b6342982-ba26-4bc1-a6f2-9274d025ef5d.apk/file"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="download-link"
+        >
+          Descargar aplicación
+        </a>
+      </div>
+
+
       <div className="footer-copyright">
-        <p>Creado por: Grupo 22</p> {/* Añadido aquí */}
+        <p>Creado por: Grupo 22</p>
         <p>&copy; 2023 Sentirse Bien Spa. Todos los derechos reservados.</p>
       </div>
     </footer>
