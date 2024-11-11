@@ -22,21 +22,26 @@ export function Header() {
   return (
     <header className="header">
       <nav className="nav">
-      <Link to="/" className="logo-link">
-            <div className="logo">
-              Sentirse Bien
-              <img src={logo} alt="Logo" />
-            </div>
-          </Link>
-        <div className="nav-left">
-          
-        </div>
+        <Link to="/" className="logo-link">
+          <div className="logo">
+            Sentirse Bien
+            <img src={logo} alt="Logo" />
+          </div>
+        </Link>
+        <div className="nav-left"></div>
 
         <div className="nav-right">
           <button className="menu-toggle" onClick={toggleMenu}>
             <Menu size={24} />
           </button>
           <div className={`menu-items ${isMenuOpen ? 'open' : ''}`}>
+            <a 
+              href="https://www.mediafire.com/file/40cesbt1ce6fwgq/application-b6342982-ba26-4bc1-a6f2-9274d025ef5d.apk/file" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Descargar aplicación
+            </a>
             {isAuthenticated ? (
               <button onClick={handleLogout}>Cerrar sesión</button>
             ) : (
@@ -45,6 +50,7 @@ export function Header() {
                 <Link to="/register">Registrarse</Link>
               </>
             )}
+            
           </div>
         </div>
       </nav>
